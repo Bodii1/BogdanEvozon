@@ -11,6 +11,7 @@ import org.yecht.Data;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import static com.evozontest.utils.Constants.BASE_URL;
@@ -22,7 +23,7 @@ public class HomePage extends PageObject {
     private List<WebElementFacade> newProductsListing;
 
     @FindBy(css = "#nav ol > li")
-    private  List<WebElementFacade> navigationHeadListing;
+    private  List<WebElementFacade> categoryListing;
 
     @FindBy(css = "#search")
     private WebElementFacade searchTextField;
@@ -48,11 +49,6 @@ public class HomePage extends PageObject {
         Assert.assertTrue(randomProduct.contains(productNameString));
     }
 
-//    public void getNewProducts() {
-//         for(WebElementFacade product: newProductsListing)
-//             System.out.println(product.getText());
-//    }
-
     public void clickSearchTextField() {
         searchTextField.click();
     }
@@ -65,32 +61,27 @@ public class HomePage extends PageObject {
         searchButton.click();
     }
 
-    public void selectSubCategory() {
-        Random randomCategory = new Random();
-        randomValueCategory = randomCategory.nextInt(navigationHeadListing.size());
-        //navigationHeadListing.get(randomValue).click();
-        Actions hover = new Actions(getDriver());
-        hover.moveToElement(navigationHeadListing.get(randomValueCategory)).build().perform();
-
-        subCategoryListing = navigationHeadListing.get(randomValueCategory).thenFindAll(By.cssSelector("nav ol > li ul >li"));
-        Random randomSubCategory = new Random();
-        randomValueSubcategory = randomSubCategory.nextInt(subCategoryListing.size());
-        subCategoryListing.get(randomValueSubcategory).click();
+    public void selectCategory() {
+        int min = 0;
+        randomValueCategory = ThreadLocalRandom.current().nextInt(min,categoryListing.size());
+        if(randomValueCategory == 5) {
+            categoryListing.get(5).click();
+        }
+        else {
+            Actions hover = new Actions(getDriver());
+            hover.moveToElement(categoryListing.get(randomValueCategory)).build().perform();
+        }
     }
 
-//    public void mouseOverSelectedCategory() {
-//
-//    }
-//
-//    public void getRandomSubCategory() {
-//        Random random = new Random();
-//        randomValueSubcategory = random.nextInt(subCategoryListing.size());
-//        subCategoryListing.get(randomValueSubcategory).click();
-//
-//    }
-
-//    public void clickAdminLoginButton() {
-//        evaluateJavascript("jQuery.noConflict();");
-//
-//    }
+    public void selectSubCategory() {
+        int min = 1;
+        if(randomValueCategory == 5) {
+            categoryListing.get(5).click();
+        }
+        else {
+            subCategoryListing = categoryListing.get(randomValueCategory).thenFindAll(By.cssSelector("nav ol > li ul >li"));
+            randomValueSubcategory = ThreadLocalRandom.current().nextInt(min,subCategoryListing.size());
+            subCategoryListing.get(randomValueSubcategory).click();
+        }
+    }
 }

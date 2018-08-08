@@ -18,12 +18,12 @@ public class RandomProducts extends BaseTest {
     LoginSteps loginSteps;
 
     @Test
-    public void productsList() {
+    public void chooseRandomProduct() {
         loginSteps.login(USER_EMAIL_ADDRESS, USER_PASSWORD);
         lista.openHomepage();
-        lista.randomSubCategory();
+        lista.randomByCategory();
+        lista.randomBySubCategory();
         lista.clickProduct();
     }
-
 
 }

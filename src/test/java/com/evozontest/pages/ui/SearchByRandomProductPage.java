@@ -6,19 +6,29 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SearchByRandomProductPage extends PageObject {
 
     @FindBy(css = ".products-grid > li")
     private List<WebElementFacade> allProducts;
 
+    @FindBy(css = "div.product-options")
+    private WebElementFacade productOptions;
+
     private int randomValueProduct;
 
     public void clickOnARandomProduct() {
-        Random randomProduct = new Random();
+        int min = 0;
 
-        randomValueProduct = randomProduct.nextInt(allProducts.size());
+        randomValueProduct = ThreadLocalRandom.current().nextInt(min,allProducts.size());
         allProducts.get(randomValueProduct).click();
+    }
 
+    public void requiredFields() {
+
+        if(productOptions.isEnabled()) {
+
+        }
     }
 }

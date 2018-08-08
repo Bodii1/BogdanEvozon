@@ -30,7 +30,12 @@ public class ProductsSteps {
 //    }
 
     @Step
-    public void randomSubCategory() {
+    public void randomByCategory() {
+        homePage.selectCategory();
+    }
+
+    @Step
+    public void randomBySubCategory() {
         homePage.selectSubCategory();
     }
 
