@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.Step;
 public class AdminLoginSteps {
 
     LoginAdminPage loginAdminPage;
-    MagentoMainPage magentoMainPage;
+    //MagentoMainPage magentoMainPage;
 
     @Step
     public void openAdminLoginMagento() {
@@ -34,7 +34,7 @@ public class AdminLoginSteps {
         loginAdminPage.clickCloseButton();
     }
 
-    @Step
+    /*@Step
     public void mouseOverCustomers() {
         magentoMainPage.mouseOver();
     }
@@ -42,8 +42,6 @@ public class AdminLoginSteps {
     @Step
     public void clickOnManageCustomers() {
         magentoMainPage.selectManageCustomers();
-    }
-
-
+    }*/
 
 }

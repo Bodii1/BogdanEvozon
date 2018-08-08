@@ -24,6 +24,21 @@ public class MagentoMainPage extends PageObject {
     @FindBy(css = "#customerGrid_filter_email")
     private WebElementFacade searchByEmail;
 
+    @FindBy(css = "td.last")
+    private WebElementFacade editLine;
+
+    @FindBy(css = "td.last > a")
+    private WebElementFacade editButton;
+
+    @FindBy(css = "[title=\"Account Information\"]")
+    private WebElementFacade accountInformation;
+
+    @FindBy(css = "#_accountemail")
+    private WebElementFacade emailAccount;
+
+    @FindBy(css = "[title=\"Delete Customer\"]")
+    private WebElementFacade deleteButton;
+
     public void mouseOver() {
         Actions hover = new Actions(getDriver());
         hover.moveToElement(mouseOverCusomer).build().perform();
@@ -33,8 +48,30 @@ public class MagentoMainPage extends PageObject {
         clickOn.click();
     }
 
-    public void selectSearchEmail() {
-        searchByEmail.sendKeys();
+    public void selectSearchEmail(String emailAddress) {
+        searchByEmail.sendKeys(emailAddress);
+    }
+
+    public void mouseOverEdit() {
+        Actions hover = new Actions(getDriver());
+        hover.moveToElement(editLine).build().perform();
+        editButton.click();
+    }
+
+    public void selectAccountInformation() {
+        accountInformation.click();
+    }
+
+    public String emailAddressText() {
+        return emailAccount.getAttribute("value");
+    }
+
+    public void selectDeleteButton() {
+        deleteButton.click();
+    }
+
+    public void selectOkJavascriotAlert() {
+        getDriver().switchTo().alert().accept();
     }
 
 }

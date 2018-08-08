@@ -6,7 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.util.List;
 import java.util.Random;
-// TODO rename class
+
 public class SearchByRandomProductPage extends PageObject {
 
     @FindBy(css = ".products-grid > li")

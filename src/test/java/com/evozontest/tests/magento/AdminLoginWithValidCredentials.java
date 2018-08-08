@@ -17,8 +17,7 @@ public class AdminLoginWithValidCredentials extends BaseTest {
         adminLoginSteps.passwordField();
         adminLoginSteps.clickLogin();
         adminLoginSteps.clickClose();
-        adminLoginSteps.mouseOverCustomers();
-        adminLoginSteps.clickOnManageCustomers();
+        //adminLoginSteps.mouseOverCustomers();
+        //adminLoginSteps.clickOnManageCustomers();
     }
 }
-// TODO ui and back-end

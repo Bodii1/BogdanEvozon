@@ -2,6 +2,8 @@ package com.evozontest.steps.ui;
 
 import com.evozontest.entity.User;
 import com.evozontest.factories.Factory;
+import com.evozontest.pages.magento.LoginAdminPage;
+import com.evozontest.pages.magento.MagentoMainPage;
 import com.evozontest.pages.ui.AccountPage;
 import com.evozontest.pages.ui.CreateAccountPage;
 import net.thucydides.core.annotations.Step;
@@ -11,6 +13,7 @@ public class RegisterSteps {
 
     CreateAccountPage createAccountPage;
     AccountPage accountPage;
+    User user = Factory.generateUser();
 
     @Step
     public void openRegisterPage() {
@@ -44,9 +47,6 @@ public class RegisterSteps {
 
     @Step
     public User enterUserValidFields() {
-
-        User user = Factory.generateUser();
-
         createAccountPage.setFirstNameTextField(user.getFirstName());
         createAccountPage.setLastNameTextField(user.getLastName());
         createAccountPage.setEmailAddressTextField(user.getEmailAddress());
@@ -64,5 +64,74 @@ public class RegisterSteps {
     @Step
     public void isCreated() {
         Assert.assertTrue(accountPage.isCreateSuccess("Thank you for registering"));
+    }
+
+    LoginAdminPage loginAdminPage;
+    MagentoMainPage magentoMainPage;
+
+    @Step
+    public void openAdminLoginMagento() {
+        loginAdminPage.open();
+    }
+
+    @Step
+    public void usernameField() {
+        loginAdminPage.setUserNameInputTextField();
+    }
+
+    @Step
+    public void passwordField() {
+        loginAdminPage.setPasswordInputTextField();
+    }
+
+    @Step
+    public void clickLogin() {
+        loginAdminPage.clickAdminLoginButton();
+    }
+
+    @Step
+    public void clickClose() {
+        loginAdminPage.clickCloseButton();
+    }
+
+    @Step
+    public void mouseOverCustomers() {
+        magentoMainPage.mouseOver();
+    }
+
+    @Step
+    public void clickOnManageCustomers() {
+        magentoMainPage.selectManageCustomers();
+    }
+
+    @Step
+    public void clickOnEmailInputTextField() {
+        magentoMainPage.selectSearchEmail(user.getEmailAddress());
+    }
+
+    @Step
+    public void mouseOverEditButton() {
+        magentoMainPage.mouseOverEdit();
+    }
+
+    @Step
+    public void clickOnAcccountInformation() {
+        magentoMainPage.selectAccountInformation();
+    }
+
+    @Step
+    public void getEmailAddressText() {
+        String actualResult = magentoMainPage.emailAddressText();
+        Assert.assertEquals(actualResult,user.getEmailAddress());
+    }
+
+    @Step
+    public void clickOnDeleteCustomerButton() {
+        magentoMainPage.selectDeleteButton();
+    }
+
+    @Step
+    public void clickOkJavascriptAlert() {
+        magentoMainPage.selectOkJavascriotAlert();
     }
 }
