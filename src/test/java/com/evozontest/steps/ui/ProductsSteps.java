@@ -3,7 +3,9 @@ package com.evozontest.steps.ui;
 import com.evozontest.pages.ui.CartPage;
 import com.evozontest.pages.ui.HomePage;
 import com.evozontest.pages.ui.SearchByRandomProductPage;
+import com.evozontest.pages.ui.WishListPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
 
@@ -12,6 +14,7 @@ public class ProductsSteps extends ScenarioSteps {
     HomePage homePage;
     SearchByRandomProductPage searchByRandomProductPage;
     CartPage cartPage;
+    WishListPage wishListPage;
 
     @Step
     public void openHomepage() {
@@ -59,7 +62,46 @@ public class ProductsSteps extends ScenarioSteps {
     }
 
     @Step
+    public void clickOnWishListButton() {
+        searchByRandomProductPage.clickWishListButton();
+    }
+
+    @Step
+    public void getSuccessMessageWishList() {
+        Assert.assertTrue(wishListPage.getSuccessMessage().contains("has been added to your wishlist."));
+        Assert.assertTrue(wishListPage.displaySuccessMessage());
+    }
+
+    @Step
+    public void deleteProductFromWishList() {
+        wishListPage.clickDeleteButton();
+        getDriver().switchTo().alert().accept();
+    }
+
+    @Step
     public void deleteProductFromCart() {
         cartPage.deleteProductButton();
+    }
+
+    @StepGroup
+    public void addARandomProduct() {
+        openHomepage();
+        randomByCategory();
+        randomBySubCategory();
+        clickProduct();
+    }
+
+    @StepGroup
+    public void addToCartRandomProduct() {
+        setRequiredFields();
+        checkProductNameFromCart();
+        deleteProductFromCart();
+    }
+
+    @StepGroup
+    public void addToWishListRandomProduct() {
+        clickOnWishListButton();
+        getSuccessMessageWishList();
+        deleteProductFromWishList();
     }
 }

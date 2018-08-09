@@ -12,10 +12,6 @@ public class AdminLoginWithValidCredentials extends BaseTest {
 
     @Test
     public void adminLogin() {
-        adminLoginSteps.openAdminLoginMagento();
-        adminLoginSteps.usernameField();
-        adminLoginSteps.passwordField();
-        adminLoginSteps.clickLogin();
-        adminLoginSteps.clickClose();
+        adminLoginSteps.adminLoginGroup();
     }
 }

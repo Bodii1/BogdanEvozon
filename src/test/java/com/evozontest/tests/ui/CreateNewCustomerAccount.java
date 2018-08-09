@@ -10,8 +10,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom(value = Constants.CSV_FILES_PATH + "Register.csv")
+//@RunWith(SerenityParameterizedRunner.class)
+//@UseTestDataFrom(value = Constants.CSV_FILES_PATH + "Register.csv")
 public class CreateNewCustomerAccount extends BaseTest {
 
     @Steps
@@ -19,24 +19,7 @@ public class CreateNewCustomerAccount extends BaseTest {
 
     @Test
     public void createRandomNewCostumerAccount() {
-
-        bodiionekenobi.openRegisterPage();
-        bodiionekenobi.enterUserValidFields();
-        bodiionekenobi.clickRegister();
-        bodiionekenobi.isCreated();
-        bodiionekenobi.openAdminLoginMagento();
-        bodiionekenobi.usernameField();
-        bodiionekenobi.passwordField();
-        bodiionekenobi.clickLogin();
-        bodiionekenobi.clickClose();
-        bodiionekenobi.mouseOverCustomers();
-        bodiionekenobi.clickOnManageCustomers();
-        bodiionekenobi.clickOnEmailInputTextField();
-        bodiionekenobi.mouseOverEditButton();
-        bodiionekenobi.clickOnAcccountInformation();
-        bodiionekenobi.getEmailAddressText();
-        bodiionekenobi.clickOnDeleteCustomerButton();
-        bodiionekenobi.clickOkJavascriptAlert();
+        bodiionekenobi.createNewCustomerGroup();
     }
 
     String firstname;

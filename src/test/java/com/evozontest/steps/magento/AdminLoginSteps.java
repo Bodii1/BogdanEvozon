@@ -3,6 +3,7 @@ package com.evozontest.steps.magento;
 import com.evozontest.pages.magento.LoginAdminPage;
 import com.evozontest.pages.magento.MagentoMainPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 
 public class AdminLoginSteps {
 
@@ -43,5 +44,14 @@ public class AdminLoginSteps {
     public void clickOnManageCustomers() {
         magentoMainPage.selectManageCustomers();
     }*/
+
+    @StepGroup
+    public void adminLoginGroup() {
+        openAdminLoginMagento();
+        usernameField();
+        passwordField();
+        clickLogin();
+        clickClose();
+    }
 
 }

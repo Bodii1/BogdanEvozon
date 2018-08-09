@@ -9,7 +9,7 @@ import org.junit.Test;
 import static com.evozontest.utils.Constants.USER_EMAIL_ADDRESS;
 import static com.evozontest.utils.Constants.USER_PASSWORD;
 
-public class AddToCartRandomProducts extends BaseTest {
+public class AddToCartRandomProduct extends BaseTest {
 
     @Steps
     ProductsSteps product;
@@ -19,14 +19,9 @@ public class AddToCartRandomProducts extends BaseTest {
 
     @Test
     public void chooseRandomProduct() {
-        loginSteps.login(USER_EMAIL_ADDRESS, USER_PASSWORD);
-        product.openHomepage();
-        product.randomByCategory();
-        product.randomBySubCategory();
-        product.clickProduct();
-        product.setRequiredFields();
-        product.checkProductNameFromCart();
-        product.deleteProductFromCart();
+        loginSteps.loginGroup(USER_EMAIL_ADDRESS, USER_PASSWORD);
+        product.addARandomProduct();
+        product.addToCartRandomProduct();
     }
 
 }

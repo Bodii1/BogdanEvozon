@@ -61,8 +61,14 @@ public class LoginSteps {
         }
     }
 
+    @Step
+    public void logOutAccount() {
+        accountPage.clickAccountButton();
+        accountPage.clickLogOutButton();
+    }
+
     @StepGroup
-    public void login(String emailAddress, String password){
+    public void loginGroup(String emailAddress, String password){
         openLoginPage();
         emailField(emailAddress);
         passwordField(password);

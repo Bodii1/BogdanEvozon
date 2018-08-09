@@ -23,7 +23,7 @@ public class LoginWithValidCredentials extends BaseTest {
     String user, password, expected;
 
     @Test
-    public void loginBodii() {
+    public void loginTest() {
         bodii.openLoginPage();
         bodii.emailField(user);
         bodii.passwordField(password);
@@ -31,4 +31,9 @@ public class LoginWithValidCredentials extends BaseTest {
         bodii.isLogged(expected);
     }
 
+    @Test
+    public void logOut() {
+        bodii.loginGroup(USER_EMAIL_ADDRESS, USER_PASSWORD);
+        bodii.logOutAccount();
+    }
 }

@@ -41,6 +41,9 @@ public class SearchByRandomProductPage extends PageObject {
     @FindBy(css = "div.product-shop .product-name span")
     private WebElementFacade productName;
 
+    @FindBy(css = ".link-wishlist")
+    private WebElementFacade wishlistButton;
+
     private int randomValueProduct;
     private int randomColor;
     private int randomSize;
@@ -53,6 +56,10 @@ public class SearchByRandomProductPage extends PageObject {
     public void clickOnARandomProduct() {
         randomValueProduct = ThreadLocalRandom.current().nextInt(allProducts.size());
         allProducts.get(randomValueProduct).click();
+    }
+
+    public void clickWishListButton() {
+        wishlistButton.click();
     }
 
     public void selectRequiredFields() {

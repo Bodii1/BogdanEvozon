@@ -7,6 +7,7 @@ import com.evozontest.pages.magento.MagentoMainPage;
 import com.evozontest.pages.ui.AccountPage;
 import com.evozontest.pages.ui.CreateAccountPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import org.junit.Assert;
 
 public class RegisterSteps {
@@ -133,5 +134,26 @@ public class RegisterSteps {
     @Step
     public void clickOkJavascriptAlert() {
         magentoMainPage.selectOkJavascriotAlert();
+    }
+
+    @StepGroup
+    public void createNewCustomerGroup() {
+        openRegisterPage();
+        enterUserValidFields();
+        clickRegister();
+        isCreated();
+        openAdminLoginMagento();
+        usernameField();
+        passwordField();
+        clickLogin();
+        clickClose();
+        mouseOverCustomers();
+        clickOnManageCustomers();
+        clickOnEmailInputTextField();
+        mouseOverEditButton();
+        clickOnAcccountInformation();
+        getEmailAddressText();
+        clickOnDeleteCustomerButton();
+        clickOkJavascriptAlert();
     }
 }
