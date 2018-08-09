@@ -36,6 +36,31 @@ public class LoginSteps {
         Assert.assertTrue(accountPage.isLoggedIn("Bodii"));
     }
 
+    @Step
+    public void isLogged(String expectedResults) {
+        switch (expectedResults) {
+            case ("This is a required field.X2"):
+                Assert.assertTrue(loginPage.getRequiredEmailField());
+                Assert.assertTrue(loginPage.getRequiredPasswordField());
+                break;
+            case ("This is a required fieldP."):
+                Assert.assertTrue(loginPage.getRequiredPasswordField());
+                break;
+            case ("This is a required fieldE."):
+                Assert.assertTrue(loginPage.getRequiredEmailField());
+                break;
+            case ("Invalid login or password."):
+                Assert.assertTrue(loginPage.getInvalidLoginOrPassword());
+                break;
+            case ("Please enter 6 or more characters without leading or trailing spaces."):
+                Assert.assertTrue(loginPage.getSixOrMore());
+                break;
+            case ("Hello Bodii One!"):
+                Assert.assertTrue(accountPage.isLoggedIn("Bodii"));
+                break;
+        }
+    }
+
     @StepGroup
     public void login(String emailAddress, String password){
         openLoginPage();

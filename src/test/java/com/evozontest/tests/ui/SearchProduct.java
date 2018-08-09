@@ -4,6 +4,7 @@ import com.evozontest.steps.ui.SearchProductSteps;
 import com.evozontest.utils.BaseTest;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Ignore;
+import org.junit.Test;
 
 public class SearchProduct extends BaseTest {
 
@@ -12,7 +13,7 @@ public class SearchProduct extends BaseTest {
     @Steps
     SearchProductSteps searchProduct;
 
-    @Ignore
+    @Test
     public void searchAProduct() {
         searchProduct.openHomepage();
         searchProduct.clickSearchField();

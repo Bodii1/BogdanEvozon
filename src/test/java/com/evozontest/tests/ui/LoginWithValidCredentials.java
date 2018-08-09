@@ -20,9 +20,7 @@ public class LoginWithValidCredentials extends BaseTest {
     @Steps
     LoginSteps bodii;
 
-
-
-    String user, password;
+    String user, password, expected;
 
     @Test
     public void loginBodii() {
@@ -30,7 +28,7 @@ public class LoginWithValidCredentials extends BaseTest {
         bodii.emailField(user);
         bodii.passwordField(password);
         bodii.clickLogin();
-        bodii.isLogged();
+        bodii.isLogged(expected);
     }
 
 }

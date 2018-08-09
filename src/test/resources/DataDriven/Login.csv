@@ -1,4 +1,7 @@
-user,password
-kenobi@yahoo.com,salut1234
-bodii@yahoo.com,salut1234
-kenobi@yahoo.com,salut1234
+user,password,expected
+,,This is a required field.X2
+bodii@yahoo.com,,This is a required fieldP.
+,salut1234,This is a required fieldE.
+kenobi@yahoo.com,salut123,Invalid login or password.
+kenobi@yahoo.com,sal,Please enter 6 or more characters without leading or trailing spaces.
+kenobi@yahoo.com,salut1234,Hello Bodii One!

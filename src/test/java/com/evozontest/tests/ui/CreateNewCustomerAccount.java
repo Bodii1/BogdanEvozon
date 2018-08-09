@@ -10,8 +10,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//@RunWith(SerenityParameterizedRunner.class)
-//@UseTestDataFrom(value = Constants.CSV_FILES_PATH + "Register.csv")
+@RunWith(SerenityParameterizedRunner.class)
+@UseTestDataFrom(value = Constants.CSV_FILES_PATH + "Register.csv")
 public class CreateNewCustomerAccount extends BaseTest {
 
     @Steps
@@ -45,7 +45,7 @@ public class CreateNewCustomerAccount extends BaseTest {
     String password;
     String confirm;
 
-    @Ignore
+    @Test
     public void createNewCostumerAccountDataDriven() {
         bodiionekenobi.openRegisterPage();
         bodiionekenobi.firstNameField(firstname);
