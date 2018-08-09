@@ -62,10 +62,9 @@ public class HomePage extends PageObject {
     }
 
     public void selectCategory() {
-        int min = 0;
-        randomValueCategory = ThreadLocalRandom.current().nextInt(min,categoryListing.size());
+        randomValueCategory = ThreadLocalRandom.current().nextInt(categoryListing.size());
         if(randomValueCategory == 5) {
-            categoryListing.get(5).click();
+            categoryListing.get(randomValueCategory).click();
         }
         else {
             Actions hover = new Actions(getDriver());
@@ -76,7 +75,7 @@ public class HomePage extends PageObject {
     public void selectSubCategory() {
         int min = 1;
         if(randomValueCategory == 5) {
-            categoryListing.get(5).click();
+            categoryListing.get(randomValueCategory).click();
         }
         else {
             subCategoryListing = categoryListing.get(randomValueCategory).thenFindAll(By.cssSelector("nav ol > li ul >li"));
